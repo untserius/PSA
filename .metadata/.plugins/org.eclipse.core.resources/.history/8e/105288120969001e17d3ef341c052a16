@@ -1,9 +1,0 @@
-package app_java_2;
-
-public class E {
-	int x;
-	public static void main(String[] args) {
-		A a1 = new A();
-		System.out.println(x);
-	}
-}

@@ -6,6 +6,6 @@ public class W {
 		System.out.println(w1);
 	}
 	public void test() {
-		System.out.println(w1);// Error - outside main method
+		//System.out.println(w1);// Error - outside main method
 	}
 }

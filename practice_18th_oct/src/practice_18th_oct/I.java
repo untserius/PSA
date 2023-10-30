@@ -1,0 +1,9 @@
+package practice_18th_oct;
+
+public class I extends H {
+	public static void main(String[] args) {
+		I i1 = new I();
+		i1.test();
+		System.out.println(i1.x);
+	}
+}

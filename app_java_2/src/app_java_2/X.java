@@ -8,6 +8,6 @@ public class X {
 	}
 	
 	public void test() {
-		System.out.println(x1); // Error
+	//	System.out.println(x1); // Error
 	}
 }

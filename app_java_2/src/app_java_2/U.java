@@ -5,6 +5,6 @@ public class U {
 		System.out.println(x);
 	}
 	public static void main(String[] args) {
-		U u1 = new U();
+		//U u1 = new U();
 	}
 }

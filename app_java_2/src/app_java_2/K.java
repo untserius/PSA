@@ -7,6 +7,6 @@ public class K {
 	}
 	public void test() {
 		return;
-		System.out.println(100); // "Unreachable code error!!"
+		//System.out.println(100); // "Unreachable code error!!"
 	}
 }

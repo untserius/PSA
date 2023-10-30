@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="p1.C"/>
+    <fullyQualifiedTypeName name="p1.I"/>
+    <fullyQualifiedTypeName name="practice_18th_oct.J"/>
+    <fullyQualifiedTypeName name="p2.E"/>
+    <fullyQualifiedTypeName name="p3.E"/>
+</qualifiedTypeNameHistroy>

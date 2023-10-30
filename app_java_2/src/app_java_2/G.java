@@ -5,6 +5,6 @@ public class G {
 		
 	}
 	public void test() { //non-static
-		return 100.3f; // error
+		//return 100.3f; // error
 	}
 }

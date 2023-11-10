@@ -16,7 +16,7 @@ public class Employee extends Person{
 	
 	@Override
 	public String getLastName() {
-		return super.getlastName() + ", " + jobTitle;
+		return super.getLastName() + ", " + jobTitle;
 	}
 	
 	public static void main(String[] args) {

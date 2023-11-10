@@ -13,12 +13,7 @@ public class Person {
 		return firstName;
 	}
 	
-	public String getlastName() {
-		return lastName;
-	}
-
 	public String getLastName() {
-		// TODO Auto-generated method stub
-		return null;
+		return lastName;
 	}
 }

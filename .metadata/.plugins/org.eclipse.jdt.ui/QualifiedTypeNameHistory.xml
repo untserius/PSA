@@ -8,5 +8,6 @@
     <fullyQualifiedTypeName name="p1.A"/>
     <fullyQualifiedTypeName name="p1.B"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.DriverManager"/>
 </qualifiedTypeNameHistroy>

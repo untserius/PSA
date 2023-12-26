@@ -40,7 +40,20 @@ public class DAOServiceImpl implements DAOService {
 
 	@Override
 	public void delete(String email) {
-
+		try {
+			stmnt.executeUpdate("DELETE FROm registration WHERE email='"+email+"'");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public void update(String email, String mobile) {
+		try {
+			stmnt.executeUpdate("UPDATE registration SET mobile='"+mobile+"' WHERE email='"+email+"'");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Read Data</title>
 </head>
 <body>
 	<table border="1">
@@ -15,6 +15,8 @@
 			<th>City</th>
 			<th>Email</th>
 			<th>Mobile</th>
+			<th>Delete</th>
+			<th>Update</th>
 		</tr>
 		
 		<%
@@ -25,6 +27,8 @@
 				<td><%= result.getString(2) %></td>
 				<td><%= result.getString(3) %></td>
 				<td><%= result.getString(4) %></td>
+				<td><a href="deleteRegistration?email=<%= result.getString(3)%>">Delete</a></td>
+				<td><a href="updateRegistration?email=<%= result.getString(3)%>&mobile=<%= result.getString(4)%>">Update</a></td>
 			</tr>
 		<%}%>
 	</table>

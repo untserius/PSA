@@ -9,5 +9,8 @@
 <body>
 	<a href="saveReg">New Inquiry</a>
 	<a href="allReg">All Registrations</a>
+	<form action="logOut" method="post">
+		<input type="submit" value="Logout">
+	</form>
 </body>
 </html>

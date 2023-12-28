@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.web_app_6.model.DAOServiceImpl;
 
@@ -25,18 +26,32 @@ public class RegistrationController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("name");
-		String city = request.getParameter("city");
-		String email = request.getParameter("email");
-		String mobile = request.getParameter("mobile");
+		try {
+		HttpSession ss = request.getSession(false);
+		ss.setMaxInactiveInterval(10);
 		
-		DAOServiceImpl service = new DAOServiceImpl();
-		service.ConnectDB();
-		service.saveRegistration(name, city, email, mobile);
-		
-		request.setAttribute("msg", "Record is saved!!");
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/student_enquiry.jsp");
-		rd.forward(request, response);
+			if(ss.getAttribute("email") != null) {
+				String name = request.getParameter("name");
+				String city = request.getParameter("city");
+				String email = request.getParameter("email");
+				String mobile = request.getParameter("mobile");
+				
+				DAOServiceImpl service = new DAOServiceImpl();
+				service.ConnectDB();
+				service.saveRegistration(name, city, email, mobile);
+				
+				request.setAttribute("msg", "Record is saved!!");
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/student_enquiry.jsp");
+				rd.forward(request, response);
+			} else {
+				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+				rd.forward(request, response);
+			}
+		} catch (Exception e) {
+			RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+			rd.forward(request, response);
+		}
+
 	}
 
 }

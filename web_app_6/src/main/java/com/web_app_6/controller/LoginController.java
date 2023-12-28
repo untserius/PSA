@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.web_app_6.model.DAOServiceImpl;
 
@@ -30,6 +31,9 @@ public class LoginController extends HttpServlet {
 		service.ConnectDB();
 		boolean status = service.verifyLogin(email, password);
 		if(status) {
+			HttpSession ss = request.getSession(true);
+			ss.setAttribute("email", email);
+			ss.setMaxInactiveInterval(10);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/student_enquiry.jsp");
 			rd.forward(request, response);
 		}else {

@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.web_app_6.model.DAOServiceImpl;
 
@@ -21,13 +22,19 @@ public class ReadRegistrationController extends HttpServlet {
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DAOServiceImpl service = new DAOServiceImpl();
-		service.ConnectDB();
-		ResultSet result = service.getALLRegistration();
-		request.setAttribute("res", result);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/list_reg.jsp");
-		rd.forward(request, response);
+		HttpSession ss = request.getSession(false);
+		if(ss.getAttribute("email") != null) {
+			DAOServiceImpl service = new DAOServiceImpl();
+			service.ConnectDB();
+			ResultSet result = service.getALLRegistration();
+			request.setAttribute("res", result);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/list_reg.jsp");
+			rd.forward(request, response);			
+		} else {
+			RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+			rd.forward(request, response);	
+		}
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

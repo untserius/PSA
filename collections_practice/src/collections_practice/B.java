@@ -1,6 +1,7 @@
 package collections_practice;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class B {
 	public static void main(String[] args) {
@@ -26,5 +27,17 @@ public class B {
 		
 		x.remove(0);
 		System.out.println("remove method(): " + x);
+		
+		// Reading the data from an Arraylist using get method
+		
+		System.out.println(x.get(1));
+		
+		// Using iterator we can read the value
+		
+		Iterator itr = x.iterator();
+		
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+		}
 	}
 }

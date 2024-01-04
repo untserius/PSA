@@ -14,7 +14,6 @@
 	</form>
 	
 	<%
-	
 	if(request.getAttribute("error")!=null){
 		out.println(request.getAttribute("error"));
 	}

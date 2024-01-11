@@ -10,16 +10,17 @@ public class Registration {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private int id;
 	private int fee;
+	private long mobile;
 	private String name;
 	private String email;
 	private String course;
 	
-	public long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public int getFee() {
@@ -45,6 +46,12 @@ public class Registration {
 	}
 	public void setCourse(String course) {
 		this.course = course;
+	}
+	public long getMobile() {
+		return mobile;
+	}
+	public void setMobile(long mobile) {
+		this.mobile = mobile;
 	}
 	
 }

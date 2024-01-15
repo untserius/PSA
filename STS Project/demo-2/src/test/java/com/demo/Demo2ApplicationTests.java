@@ -18,11 +18,11 @@ class Demo2ApplicationTests {
 	@Test
 	void createRegistration() {
 		Registration reg = new Registration();
-		reg.setName("sukuna");
-		reg.setEmail("sukuna@gmail.com");
-		reg.setCourse("Full Stack");
-		reg.setFee(18000);
-		reg.setMobile(9666944641L);
+		reg.setName("yuta");
+		reg.setEmail("yuta@gmail.com");
+		reg.setCourse("Golang");
+		reg.setFee(22000);
+		reg.setMobile(2332442541L);
 		
 		registrationRepository.save(reg);
 	}
@@ -91,7 +91,6 @@ class Demo2ApplicationTests {
 		} else {
 			System.out.println("Record not found!!");
 		}
-		
 	}
 	
 	@Test
@@ -108,6 +107,43 @@ class Demo2ApplicationTests {
 		} else {
 			System.out.println("Record not found!!");
 		}
-		
+	}
+	
+	@Test
+	void getRegistrationsByCourse() {
+		Iterable<Registration> regs = registrationRepository.findByCourse("Java");
+		for (Registration registration : regs) {
+			System.out.println(registration.getId());
+			System.out.println(registration.getName());
+			System.out.println(registration.getCourse());
+			System.out.println(registration.getEmail());
+			System.out.println(registration.getFee());
+			System.out.println(registration.getMobile());
+		}
+	}
+	
+	@Test
+	void getRegistrationsByEmailAndMobile() {
+		Optional<Registration> byEmailAndMobile = registrationRepository.findByEmailAndMobile("gojosatoru@gmail.com", 9663344641L);
+		Registration registration = byEmailAndMobile.get();
+			System.out.println(registration.getId());
+			System.out.println(registration.getName());
+			System.out.println(registration.getCourse());
+			System.out.println(registration.getEmail());
+			System.out.println(registration.getFee());
+			System.out.println(registration.getMobile());
+	}
+	
+	@Test
+	void getRegistrationsByEmailOrMobile() {
+		Iterable<Registration> regs = registrationRepository.findByEmailOrMobile("serius@gmail.com", 9666944641L);
+		for (Registration registration : regs) {
+			System.out.println(registration.getId());
+			System.out.println(registration.getName());
+			System.out.println(registration.getCourse());
+			System.out.println(registration.getEmail());
+			System.out.println(registration.getFee());
+			System.out.println(registration.getMobile());
+		}
 	}
 }

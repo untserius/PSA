@@ -1,14 +1,19 @@
 package com.webapp.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.webapp.entity.Registration;
+import com.webapp.service.RegistrationService;
 
 @Controller
 public class RegistrationController {
 	
+	@Autowired
+	private RegistrationService registrationService;
 	//Handler Methods
 	//http://localhost:8080/view_registration
 	
@@ -18,11 +23,19 @@ public class RegistrationController {
 	}
 	
 	@RequestMapping("/saveReg")
-	public String saveRegistration(Registration registration) {
-		System.out.println(registration.getFirstName());
-		System.out.println(registration.getLastName());
-		System.out.println(registration.getEmail());
-		System.out.println(registration.getMobile());
+	public String saveRegistration(
+			@RequestParam("firstName") String firstName,
+			@RequestParam("lastName") String lastName,
+			@RequestParam("email") String email,
+			@RequestParam("mobile") long mobile
+			) 
+	{
+		Registration reg = new Registration();
+		reg.setFirstName(firstName);
+		reg.setLastName(lastName);
+		reg.setEmail(email);
+		reg.setMobile(mobile);
+		registrationService.createRegistration(reg);
 		return "new_registration";
 	}
 }

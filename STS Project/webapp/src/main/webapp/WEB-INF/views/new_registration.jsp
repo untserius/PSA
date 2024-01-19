@@ -17,5 +17,6 @@
 			<input type="submit" value="save"/>
 		</pre>
 	</form>
+	${msg}
 </body>
 </html>

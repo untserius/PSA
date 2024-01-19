@@ -1,5 +1,7 @@
 package com.webapp.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,12 @@ public class RegistrationServiceImpl implements RegistrationService {
 	public void createRegistration(Registration registration) {
 		registrationRepository.save(registration);
 		
+	}
+
+	@Override
+	public List<Registration> getRegistrations() {
+		List<Registration> registrations = registrationRepository.findAll();
+		return registrations;
 	}
 	
 }

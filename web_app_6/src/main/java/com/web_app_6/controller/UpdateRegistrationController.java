@@ -30,23 +30,6 @@ public class UpdateRegistrationController extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/update_reg.jsp");
 		rd.forward(request, response);
-		
-//		try {
-//			DAOServiceImpl service = new DAOServiceImpl();
-//			service.ConnectDB();
-//			service.update(email, mobile);
-//			
-//			request.setAttribute("email", email);
-//			request.setAttribute("mobile", mobile);
-//			
-//			System.out.println(request.getAttribute("email"));
-//			System.out.println(request.getAttribute("mobile"));
-//			
-//			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/update_reg.jsp");
-//			rd.forward(request, response);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

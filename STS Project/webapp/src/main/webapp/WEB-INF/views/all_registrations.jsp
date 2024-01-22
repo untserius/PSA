@@ -8,7 +8,22 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<table style="border-collapse: collapse; border: 1px solid #000;">
+    <tr>
+        <th style="padding: 2px; border: 1px solid #000;">First Name</th>
+        <th style="padding: 2px; border: 1px solid #000;">Last Name</th>
+        <th style="padding: 2px; border: 1px solid #000;">Email</th>
+        <th style="padding: 2px; border: 1px solid #000;">Mobile</th>
+    </tr>
+    <c:forEach var="registration" items="${registrations}">
+        <tr>
+            <td style="padding: 2px; border: 1px solid #000;">${registration.firstName}</td>
+            <td style="padding: 2px; border: 1px solid #000;">${registration.lastName}</td>
+            <td style="padding: 2px; border: 1px solid #000;">${registration.email}</td>
+            <td style="padding: 2px; border: 1px solid #000;">${registration.mobile}</td>
+        </tr>
+    </c:forEach>
+</table>
 
-	<c:out value="hello"></c:out>
 </body>
 </html>

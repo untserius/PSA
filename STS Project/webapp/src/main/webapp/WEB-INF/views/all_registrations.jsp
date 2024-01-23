@@ -14,6 +14,8 @@
         <th style="padding: 2px; border: 1px solid #000;">Last Name</th>
         <th style="padding: 2px; border: 1px solid #000;">Email</th>
         <th style="padding: 2px; border: 1px solid #000;">Mobile</th>
+        <th style="padding: 2px; border: 1px solid #000;">Delete</th>
+        <th style="padding: 2px; border: 1px solid #000;">Update</th>
     </tr>
     <c:forEach var="registration" items="${registrations}">
         <tr>
@@ -21,6 +23,8 @@
             <td style="padding: 2px; border: 1px solid #000;">${registration.lastName}</td>
             <td style="padding: 2px; border: 1px solid #000;">${registration.email}</td>
             <td style="padding: 2px; border: 1px solid #000;">${registration.mobile}</td>
+            <td style="padding: 2px; border: 1px solid #000;"><a href="delete-registration?id=${registration.id}">Delete</a></td>
+            <td style="padding: 2px; border: 1px solid #000;"><a href="update-registration?id=${registration.id}">Update</a></td>
         </tr>
     </c:forEach>
 </table>

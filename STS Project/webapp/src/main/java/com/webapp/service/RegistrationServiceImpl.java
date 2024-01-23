@@ -25,5 +25,17 @@ public class RegistrationServiceImpl implements RegistrationService {
 		List<Registration> registrations = registrationRepository.findAll();
 		return registrations;
 	}
-	
+
+	@Override
+	public void deleteRegistration(long id) {
+		registrationRepository.deleteById(id);
+		
+	}
+
+	@Override
+	public Registration getRegistrationById(long id) {
+		Registration registration = registrationRepository.findById(id).get();
+		return registration;	
+		
+	}
 }

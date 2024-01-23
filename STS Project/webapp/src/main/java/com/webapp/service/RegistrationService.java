@@ -8,4 +8,8 @@ public interface RegistrationService {
 	void createRegistration(Registration registration);
 
 	List<Registration> getRegistrations();
+
+	void deleteRegistration(long id);
+
+	Registration getRegistrationById(long id);
 }

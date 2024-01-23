@@ -49,4 +49,21 @@ public class RegistrationController {
 		model.addAttribute("registrations", reg);
 		return "all_registrations";
 	}
+	
+	//http://localhost:8080/delete-registrations?id=1 
+	@RequestMapping("/delete-registration")
+	public String deleteRegistration(@RequestParam long id, Model model) {
+		registrationService.deleteRegistration(id);
+		List<Registration> reg = registrationService.getRegistrations();
+		model.addAttribute("registrations", reg);
+		return "all_registrations";
+	}
+	
+	//http://localhost:8080/delete-registrations?id=1 
+		@RequestMapping("/update-registration")
+		public String updateRegistration(@RequestParam long id, Model model) {
+			Registration registration = registrationService.getRegistrationById(id);
+			model.addAttribute("registration", registration);
+			return "update_registration";
+		}
 }

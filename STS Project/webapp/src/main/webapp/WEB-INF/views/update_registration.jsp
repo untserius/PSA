@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h2>Update Registration</h2>
-	<form action="" method="post">
+	<form action="updateReg" method="post">
 		<pre>
 			First Name <input type="text" name="firstName" value="${registration.firstName}"/>
 			Last Name <input type="text" name="lastName" value="${registration.lastName}"/>

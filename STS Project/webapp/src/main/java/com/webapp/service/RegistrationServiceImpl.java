@@ -38,4 +38,10 @@ public class RegistrationServiceImpl implements RegistrationService {
 		return registration;	
 		
 	}
+
+	@Override
+	public void updateRegistration(Registration registration) {
+		registrationRepository.save(registration);
+		
+	}
 }

@@ -42,6 +42,20 @@ public class RegistrationController {
 		return "new_registration";
 	}
 	
+	@RequestMapping("/updateReg")
+	public String updateRegistration(RegistrationDto registrationDto, ModelMap model) {
+		
+		Registration reg = new Registration();
+		reg.setFirstName(registrationDto.getFirstName());
+		reg.setLastName(registrationDto.getLastName());
+		reg.setEmail(registrationDto.getEmail());
+		reg.setMobile(registrationDto.getMobile());
+		
+		registrationService.updateRegistration(reg);
+		model.addAttribute("msg", "Record is saved!!");
+		return "update_registration";
+	}
+	
 	//http://localhost:8080/all-registrations
 	@RequestMapping("all-registrations")
 	public String getAllRegistrations(Model model) {
@@ -59,11 +73,11 @@ public class RegistrationController {
 		return "all_registrations";
 	}
 	
-	//http://localhost:8080/delete-registrations?id=1 
-		@RequestMapping("/update-registration")
-		public String updateRegistration(@RequestParam long id, Model model) {
-			Registration registration = registrationService.getRegistrationById(id);
-			model.addAttribute("registration", registration);
-			return "update_registration";
-		}
+	//http://localhost:8080/update-registrations
+	@RequestMapping("/update-registration")
+	public String updateRegistration(@RequestParam long id, Model model) {
+		Registration registration = registrationService.getRegistrationById(id);
+		model.addAttribute("registration", registration);
+		return "update_registration";
+	}
 }

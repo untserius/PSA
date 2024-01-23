@@ -12,4 +12,6 @@ public interface RegistrationService {
 	void deleteRegistration(long id);
 
 	Registration getRegistrationById(long id);
+
+	void updateRegistration(Registration registration);
 }

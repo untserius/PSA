@@ -1,6 +1,7 @@
 package com.webapp.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.webapp.entity.Registration;
 
@@ -13,5 +14,5 @@ public interface RegistrationService {
 
 	Registration getRegistrationById(long id);
 
-	void updateRegistration(Registration registration);
+	void updateRegRecord(Registration registration);
 }

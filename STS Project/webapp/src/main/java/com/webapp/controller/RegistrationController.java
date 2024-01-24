@@ -1,6 +1,7 @@
 package com.webapp.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,19 +43,19 @@ public class RegistrationController {
 		return "new_registration";
 	}
 	
-	@RequestMapping("/updateReg")
-	public String updateRegistration(RegistrationDto registrationDto, ModelMap model) {
-		
-		Registration reg = new Registration();
-		reg.setFirstName(registrationDto.getFirstName());
-		reg.setLastName(registrationDto.getLastName());
-		reg.setEmail(registrationDto.getEmail());
-		reg.setMobile(registrationDto.getMobile());
-		
-		registrationService.updateRegistration(reg);
-		model.addAttribute("msg", "Record is saved!!");
-		return "update_registration";
-	}
+//	@RequestMapping("/updateReg")
+//	public String updateRegistration(RegistrationDto registrationDto, ModelMap model) {
+//		
+//		Registration reg = new Registration();
+//		reg.setFirstName(registrationDto.getFirstName());
+//		reg.setLastName(registrationDto.getLastName());
+//		reg.setEmail(registrationDto.getEmail());
+//		reg.setMobile(registrationDto.getMobile());
+//		
+//		registrationService.updateRegistration(reg);
+//		model.addAttribute("msg", "Record is saved!!");
+//		return "update_registration";
+//	}	
 	
 	//http://localhost:8080/all-registrations
 	@RequestMapping("all-registrations")
@@ -80,4 +81,30 @@ public class RegistrationController {
 		model.addAttribute("registration", registration);
 		return "update_registration";
 	}
+	
+	
+	@RequestMapping("/updateRegRecord")
+	public String updateRegRecord(RegistrationDto dto, Model model) {
+		
+		Registration registration = new Registration();		
+		registration.setId(dto.getId());
+		registration.setFirstName(dto.getFirstName());
+		registration.setLastName(dto.getLastName());
+		registration.setEmail(dto.getEmail());
+		registration.setMobile(dto.getMobile());
+		
+		registrationService.updateRegRecord(registration);
+		
+		List<Registration> reg = registrationService.getRegistrations();
+		model.addAttribute("registrations", reg);
+		return "all_registrations";
+	}
+//	@RequestMapping("/updateReg")
+//	public String updateOneRegistration(@ModelAttribute("registration")Registration registration, Model model) {
+//		registrationService.createRegistration(registration);
+//		List<Registration> registrations = registrationService.getRegistrations();
+//		model.addAttribute("registrations", registrations);
+//		System.out.println(registrations);
+//		return "all_registrations";
+//	}
 }

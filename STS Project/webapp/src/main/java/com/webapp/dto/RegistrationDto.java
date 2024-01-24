@@ -2,11 +2,12 @@ package com.webapp.dto;
 
 public class RegistrationDto {
 	
+	private long id;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private long mobile;
-	
+		
 	
 	public String getFirstName() {
 		return firstName;
@@ -32,5 +33,10 @@ public class RegistrationDto {
 	public void setMobile(long mobile) {
 		this.mobile = mobile;
 	}
-	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}	
 }

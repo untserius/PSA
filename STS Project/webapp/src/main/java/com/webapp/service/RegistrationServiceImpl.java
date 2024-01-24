@@ -1,6 +1,7 @@
 package com.webapp.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,8 +41,10 @@ public class RegistrationServiceImpl implements RegistrationService {
 	}
 
 	@Override
-	public void updateRegistration(Registration registration) {
+	public void updateRegRecord(Registration registration) {
 		registrationRepository.save(registration);
 		
 	}
+
+	
 }

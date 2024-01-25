@@ -6,7 +6,6 @@ INDEX VERSION 1.134+D:\Study\PSA\.metadata\.plugins\org.eclipse.jdt.core
 827285296.index
 806729469.index
 1964677984.index
-3413725848.index
 1818215919.index
 2301764121.index
 2622736506.index

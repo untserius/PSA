@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.webapp.dto.RegistrationDto;
 import com.webapp.entity.Registration;
+import com.webapp.service.EmailService;
 import com.webapp.service.RegistrationService;
 
 @Controller
@@ -21,6 +22,10 @@ public class RegistrationController {
 	
 	@Autowired
 	private RegistrationService registrationService;
+	
+	@Autowired
+	private EmailService emailService;
+	
 	//Handler Methods
 	//http://localhost:8080/view_registration
 	
@@ -39,23 +44,18 @@ public class RegistrationController {
 		reg.setMobile(registrationDto.getMobile());
 		
 		registrationService.createRegistration(reg);
+		emailService.sendEmail(registrationDto.getEmail(), "Test", "Welcome from STS");
 		model.addAttribute("msg", "Record is saved!!");
 		return "new_registration";
 	}
 	
-//	@RequestMapping("/updateReg")
-//	public String updateRegistration(RegistrationDto registrationDto, ModelMap model) {
-//		
-//		Registration reg = new Registration();
-//		reg.setFirstName(registrationDto.getFirstName());
-//		reg.setLastName(registrationDto.getLastName());
-//		reg.setEmail(registrationDto.getEmail());
-//		reg.setMobile(registrationDto.getMobile());
-//		
-//		registrationService.updateRegistration(reg);
+//	@RequestMapping("/saveReg")
+//	public String saveRegistration(@ModelAttribute Registration registration, ModelMap model) {		
+//		registrationService.createRegistration(registration);	
+//		emailService.sendEmail(registration.getEmail(), "Test", "Welcome from STS");
 //		model.addAttribute("msg", "Record is saved!!");
-//		return "update_registration";
-//	}	
+//		return "new_registration";
+//	}
 	
 	//http://localhost:8080/all-registrations
 	@RequestMapping("all-registrations")
@@ -99,12 +99,4 @@ public class RegistrationController {
 		model.addAttribute("registrations", reg);
 		return "all_registrations";
 	}
-//	@RequestMapping("/updateReg")
-//	public String updateOneRegistration(@ModelAttribute("registration")Registration registration, Model model) {
-//		registrationService.createRegistration(registration);
-//		List<Registration> registrations = registrationService.getRegistrations();
-//		model.addAttribute("registrations", registrations);
-//		System.out.println(registrations);
-//		return "all_registrations";
-//	}
 }

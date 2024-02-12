@@ -5,4 +5,6 @@ import com.blogapp.payload.PostDto;
 public interface PostService {
 
     public PostDto createPost(PostDto postDto);
+
+    boolean deletePost(long id);
 }

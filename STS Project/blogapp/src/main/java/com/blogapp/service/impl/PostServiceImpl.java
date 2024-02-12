@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class PostServiceImpl implements PostService {
 
-    private PostRepository postRepository;
+    private final PostRepository postRepository;
 
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
     public PostServiceImpl(PostRepository postRepository, ModelMapper modelMapper) {
         this.postRepository = postRepository;
@@ -29,6 +29,23 @@ public class PostServiceImpl implements PostService {
 
         return dto;
     }
+
+    @Override
+    public boolean deletePost(long id) {
+        // Check if the post with the given ID exists before attempting to delete it
+        if (postRepository.existsById(id)) {
+            postRepository.deleteById(id);
+            return true; // Return true if deletion was successful
+        } else {
+            return false; // Return false if the post with the given ID does not exist
+        }
+    }
+
+
+//    @Override
+//    public boolean existsById(long id) {
+//        return false;
+//    }
 
     Post mapToEntity(PostDto postDto){
         Post post = modelMapper.map(postDto, Post.class);

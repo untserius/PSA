@@ -41,12 +41,6 @@ public class PostServiceImpl implements PostService {
         }
     }
 
-
-//    @Override
-//    public boolean existsById(long id) {
-//        return false;
-//    }
-
     Post mapToEntity(PostDto postDto){
         Post post = modelMapper.map(postDto, Post.class);
         return post;

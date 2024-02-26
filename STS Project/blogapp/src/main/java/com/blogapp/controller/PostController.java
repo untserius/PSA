@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/posts")
 public class PostController {
@@ -40,5 +42,16 @@ public class PostController {
             } else {
                 return new ResponseEntity<>("Id not found",HttpStatus.NOT_FOUND);
             }
+    }
+
+    // http://localhost:8080/api/posts?pageNo=0&pageSize=5
+    @GetMapping
+    public ResponseEntity<List<PostDto>> fetchAllPosts(
+            @RequestParam(name = "pageNo", defaultValue = "0", required = false) int pageNo,
+            @RequestParam(name = "pageSize", defaultValue = "5", required = false) int pageSize,
+            @RequestParam(name = "sortBy", defaultValue = "id", required = false) String sortBy
+    ){
+        List<PostDto> postDtos = postService.fetchAllPosts(pageNo, pageSize, sortBy);
+        return new ResponseEntity<>(postDtos, HttpStatus.OK);
     }
 }

@@ -1,8 +1,7 @@
 package com.blogapp.service;
 
+import com.blogapp.payload.ListPostDto;
 import com.blogapp.payload.PostDto;
-
-import java.util.List;
 
 public interface PostService {
 
@@ -10,5 +9,5 @@ public interface PostService {
 
     boolean deletePost(long id);
 
-    List<PostDto> fetchAllPosts(int pageNo, int pageSize, String sortBy);
+    ListPostDto fetchAllPosts(int pageNo, int pageSize, String sortBy, String sortDir);
 }

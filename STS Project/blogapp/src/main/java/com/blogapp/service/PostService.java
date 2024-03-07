@@ -10,4 +10,6 @@ public interface PostService {
     boolean deletePost(long id);
 
     ListPostDto fetchAllPosts(int pageNo, int pageSize, String sortBy, String sortDir);
+
+    public PostDto getPostById(long id);
 }

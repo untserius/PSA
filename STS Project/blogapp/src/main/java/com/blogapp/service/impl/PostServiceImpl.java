@@ -1,6 +1,7 @@
 package com.blogapp.service.impl;
 
 import com.blogapp.entity.Post;
+import com.blogapp.exception.ResourceNotFound;
 import com.blogapp.payload.ListPostDto;
 import com.blogapp.payload.PostDto;
 import com.blogapp.repository.PostRepository;
@@ -47,6 +48,13 @@ public class PostServiceImpl implements PostService {
         } else {
             return false; // Return false if the post with the given ID does not exist
         }
+    }
+
+    public PostDto getPostById(long id){
+        Post post = postRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFound("Post not found with id : " + id)
+        );
+        return mapToDto(post);
     }
 
     @Override

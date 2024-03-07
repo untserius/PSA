@@ -2,6 +2,7 @@ package com.blogapp.service.impl;
 
 import com.blogapp.entity.Comment;
 import com.blogapp.entity.Post;
+import com.blogapp.exception.ResourceNotFound;
 import com.blogapp.payload.CommentDto;
 import com.blogapp.payload.PostDto;
 import com.blogapp.payload.PostWithCommentDto;
@@ -37,7 +38,9 @@ public class CommentServiceImpl implements CommentService {
     }
 
     public PostWithCommentDto getALLCommentsByPostId(long id){
-        Post post = postRepository.findById(id).get();
+        Post post = postRepository.findById(id).orElseThrow(
+                () -> new ResourceNotFound("Comment not found with post id : " + id)
+        );
 
         PostDto dto = new PostDto();
         dto.setId(post.getId());

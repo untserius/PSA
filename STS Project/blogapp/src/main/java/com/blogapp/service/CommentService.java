@@ -1,11 +1,12 @@
 package com.blogapp.service;
 
 import com.blogapp.payload.CommentDto;
+import com.blogapp.payload.PostWithCommentDto;
 
 import java.util.List;
 
 public interface CommentService {
     CommentDto createComment(CommentDto commentDto, long postId);
 
-    public List<CommentDto> getALLCommentsByPostId(long id);
+    public PostWithCommentDto getALLCommentsByPostId(long id);
 }

@@ -3,6 +3,7 @@ package com.blogapp.service.impl;
 import com.blogapp.entity.Comment;
 import com.blogapp.entity.Post;
 import com.blogapp.payload.CommentDto;
+import com.blogapp.payload.PostDto;
 import com.blogapp.payload.PostWithCommentDto;
 import com.blogapp.repository.CommentRepository;
 import com.blogapp.repository.PostRepository;
@@ -38,12 +39,18 @@ public class CommentServiceImpl implements CommentService {
     public PostWithCommentDto getALLCommentsByPostId(long id){
         Post post = postRepository.findById(id).get();
 
+        PostDto dto = new PostDto();
+        dto.setId(post.getId());
+        dto.setTitle(post.getTitle());
+        dto.setDescription(post.getDescription());
+        dto.setContent(post.getContent());
+
         List<Comment> comments = commentRepository.findByPostId(id);
         List<CommentDto> dtos = comments.stream().map(c -> mapToDto(c)).collect(Collectors.toList());
         PostWithCommentDto postWithCommentDto = new PostWithCommentDto();
 
         postWithCommentDto.setCommentDto(dtos);
-        postWithCommentDto.setPost(post);
+        postWithCommentDto.setPost(dto);
         return postWithCommentDto;
     }
     Comment mapToEntity(CommentDto dto) {

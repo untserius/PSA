@@ -18,6 +18,8 @@ public class AuthController {
     @Autowired
     private UserRepository userRepository;
 
+    // http://localhost:8080/api/auth/sign-up
+
     @PostMapping("/sign-up")
     public ResponseEntity<String> createUser(@RequestBody Signup signup){
         if(userRepository.existsByEmail(signup.getEmail())){
